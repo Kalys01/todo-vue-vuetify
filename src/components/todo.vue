@@ -14,6 +14,6 @@ export default {
 
 <style scoped lang="scss">
   .case {
-    color: rgb(172, 41, 73);
+    color: rgb(158, 134, 140);
   }
 </style>

@@ -25,8 +25,7 @@
           v-for="item in items"
           :key="item.title"
           :to="item.to"
-          link
-        >
+          link>
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -42,6 +41,11 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>Application</v-toolbar-title>
+        <v-switch
+          v-model="$vuetify.theme.dark"
+          inset
+        ></v-switch>
+
     </v-app-bar>
 
     <v-main>

@@ -1,7 +1,9 @@
 <template>
   <div class="about">
     <v-text-field
-      v-model="newTask"
+      v-model="newTaskTitle"
+      @click:append="addTask"
+      @keyup.enter="addTask"
       class="ma-4"
       label="Add Tasks"
       append-icon="mdi-plus"
@@ -71,7 +73,7 @@ export default {
   name: 'Home',
   data() {
     return {
-      newTask: '',
+      newTaskTitle: '',
       tasks: [
         {
           id: 1,
@@ -95,6 +97,16 @@ export default {
     }
   },
   methods: {
+    addTask() {
+      let newTask = {
+        id: Date.now(),
+        title: this.newTaskTitle,
+        important: false,
+        done: false,
+      }
+      this.tasks.push(newTask)
+      this.newTaskTitle = ""
+    },
     deleteTask(id) {
       this.tasks = this.tasks.filter(task => task.id !== id)
     }

@@ -39,13 +39,13 @@
 
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
       <v-toolbar-title>Application</v-toolbar-title>
+      <v-spacer></v-spacer>
         <v-switch
           v-model="$vuetify.theme.dark"
           inset
+          class="pt-6"
         ></v-switch>
-
     </v-app-bar>
 
     <v-main>

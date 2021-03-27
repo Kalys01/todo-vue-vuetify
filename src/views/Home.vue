@@ -1,5 +1,13 @@
 <template>
   <div class="about">
+    <v-text-field
+      v-model="newTask"
+      class="ma-4"
+      label="Add Tasks"
+      append-icon="mdi-plus"
+      clearable
+      hide-details 
+    ></v-text-field>
     <v-list
       class="pt-0"
       flat
@@ -43,7 +51,10 @@
             >
               mdi-star
             </v-icon>
-            <v-icon @click="deleteTask(task.id)">
+            <v-icon
+              class="ml-4"
+              @click="deleteTask(task.id)"
+            >
               mdi-delete
             </v-icon>
           </template>
@@ -60,6 +71,7 @@ export default {
   name: 'Home',
   data() {
     return {
+      newTask: '',
       tasks: [
         {
           id: 1,
@@ -84,7 +96,7 @@ export default {
   },
   methods: {
     deleteTask(id) {
-      
+      this.tasks = this.tasks.filter(task => task.id !== id)
     }
   }
 }

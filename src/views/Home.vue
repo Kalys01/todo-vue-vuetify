@@ -21,7 +21,7 @@
         <v-list-item
           class="pl-0"
         >
-          <template v-slot:default="{ active }">
+          <template>
             <v-list-item
               @click="task.done = !task.done"
             >
@@ -40,16 +40,8 @@
               </v-list-item-content>
             </v-list-item>
             <v-icon
-              v-if="!active"
               color="grey lighten-1"
-              @click="task.important"
-            >
-              mdi-star-outline
-            </v-icon>
-
-            <v-icon
-              v-else
-              color="yellow darken-3"
+              :class="{ 'color-yellow' : task.important }"
             >
               mdi-star
             </v-icon>
@@ -104,16 +96,18 @@ export default {
         important: false,
         done: false,
       }
-      this.tasks.push(newTask)
-      this.newTaskTitle = ""
+      if (this.newTaskTitle.trim() !== '') {
+        this.tasks.push(newTask)
+        this.newTaskTitle = ""
+      }
     },
+
     deleteTask(id) {
       this.tasks = this.tasks.filter(task => task.id !== id)
-    }
+    },
   }
 }
 </script>
-
 
 <style lang="scss">
 #app {
